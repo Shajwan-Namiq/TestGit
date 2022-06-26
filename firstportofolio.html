@@ -1,15 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <!-- icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"
+    />
+
     <title>Document</title>
-</head>
 
-<body>
-    <h1>hello</h1>
-</body>
+    <style>
+      .home-nav {
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Start Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+      <a href="/" class="mx-3 mt-2 home-nav">
+        <i class="bi bi-arrow-left"></i> Home</a
+      >
+    </nav>
+    <!-- End Navigation Bar -->
+    <!-- Unsplash Image Resizer -->
+    <div class="container">
+      <!-- task 1: 
+            create image tag and set src to the new generated URL for the resized Image
+            (hide the image tag)
+        task 2: 
+            display the newly generated URL to the user
+            (when user clicks the newly generated URL, it should be copied to clipboard)
+        -->
+      <img src="" alt="iamge" style="display: block" id="image-source" />
+      <form action="#">
+        <div class="my-3">
+          <label for="url">Unsplash URL</label>
+          <input type="text" id="url" />
+        </div>
+        <div class="my-3">
+          <label for="height"> height</label>
+          <input type="text" id="height" />
+        </div>
+        <div class="my-3">
+          <label for="width"> width</label>
+          <input type="text" id="width" />
+        </div>
+        <button class="btn btn-primary" onclick="resize()">Resize</button>
+      </form>
+      <div class="d-block" id="new-url">New URL</div>
+      <button class="btn btn-primary" id="btn-copy">Copy The URL</button>
+    </div>
 
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+    <script src="index.js"></script>
+
+    <script>
+      function resize() {
+        let url = document.getElementById("url").value;
+        let height = document.getElementById("height").value;
+        let width = document.getElementById("width").value;
+
+        /* only returns index number of last occurence of the forward slash : 27 */
+        let lastIndex = url.lastIndexOf("/");
+        //
+        let lastPart = url.substring(lastIndex);
+        let generatedUrl = `https://source.unsplash.com${lastPart}/${width}x${height}`;
+
+        //Showing url in a div
+        let result = (document.getElementById("new-url").innerHTML =
+          generatedUrl);
+        console.log(result);
+
+        //showing new image with new URL are generated
+        let x = (document.getElementById("image-source").src = generatedUrl);
+
+        //second-task
+        //clipboard copy
+        const copyButton = document.getElementById("btn-copy");
+        copyButton.addEventListener("click", (event) => {
+          const content = document.getElementById("new-url").textContent;
+          navigator.clipboard.writeText(content);
+          const copied = navigator.clipboard.readText();
+          console.log(copied);
+        });
+
+        // https://unsplash.com/photos/mASiL-TP0eU
+        // https://source.unsplash.com/mASiL-TP0eU/heightxwidth
+      }
+    </script>
+  </body>
 </html>
