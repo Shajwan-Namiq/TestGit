@@ -19,46 +19,108 @@
     <title>Document</title>
 
     <style>
-      .home-nav {
-        text-decoration: none;
+      .bg-inpu1 {
+        background-color: white;
       }
     </style>
   </head>
   <body>
-    <!-- Start Navigation Bar -->
-    <nav class="navbar navbar-expand-lg">
-      <a href="/" class="mx-3 mt-2 home-nav">
-        <i class="bi bi-arrow-left"></i> Home</a
-      >
-    </nav>
-    <!-- End Navigation Bar -->
-    <!-- Unsplash Image Resizer -->
-    <div class="container">
-      <!-- task 1: 
+    <!-- task 1: 
             create image tag and set src to the new generated URL for the resized Image
             (hide the image tag)
         task 2: 
             display the newly generated URL to the user
             (when user clicks the newly generated URL, it should be copied to clipboard)
         -->
-      <img src="" alt="iamge" style="display: block" id="image-source" />
-      <form action="#">
-        <div class="my-3">
-          <label for="url">Unsplash URL</label>
-          <input type="text" id="url" />
+
+    <div class="container text-center bg-light mt-3 p-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="section-title text-center">
+            <h2 class="fw-bold mb-5 txt-about text-uppercase">resize Image</h2>
+          </div>
         </div>
-        <div class="my-3">
-          <label for="height"> height</label>
-          <input type="text" id="height" />
+      </div>
+
+      <!-- Unsplash Image Resizer -->
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="section-title">
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-lg-8 mb-4">
+                  <img
+                    src=""
+                    alt="image"
+                    style="display: block"
+                    id="image-source"
+                  />
+                </div>
+              </div>
+
+              <!------ resize-image-form --------->
+              <div class="contact-form">
+                <form action="#">
+                  <div class="row justify-content-center">
+                    <div class="col-lg-8 mb-4">
+                      <input
+                        type="text"
+                        id="url"
+                        placeholder="Enter Unsplash URL ex https://unsplash.com/photos/yudEIFgb9-U"
+                        class="form-control form-control-lg fs-6 border-0 shadow-sm"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="row justify-content-center">
+                    <div class="col-lg-8 mb-4">
+                      <input
+                        type="text"
+                        id="width"
+                        placeholder="Enter width(Must be a Number)"
+                        class="form-control form-control-lg fs-6 border-0 shadow-sm"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="row justify-content-center">
+                    <div class="col-lg-8 mb-4">
+                      <input
+                        type="text"
+                        id="height"
+                        placeholder="Enter height(Must be a Number)"
+                        class="form-control form-control-lg fs-6 border-0 shadow-sm"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="row justify-content-center">
+                    <div class="col-lg-8 mb-4 d-grid">
+                      <button class="btn btn-primary" onclick="resize()">
+                        Resize
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="row justify-content-center mb-2">
+                    <div class="col-lg-8 mb-4 d-grid">
+                      <div class="d-block bg-inpu1" id="new-url">New URL</div>
+                    </div>
+                  </div>
+
+                  <div class="row justify-content-center">
+                    <div class="col-lg-8 mb-4 d-grid">
+                      <button class="btn btn-primary" id="btn-copy">
+                        Copy The URL
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="my-3">
-          <label for="width"> width</label>
-          <input type="text" id="width" />
-        </div>
-        <button class="btn btn-primary" onclick="resize()">Resize</button>
-      </form>
-      <div class="d-block" id="new-url">New URL</div>
-      <button class="btn btn-primary" id="btn-copy">Copy The URL</button>
+      </div>
     </div>
 
     <script
