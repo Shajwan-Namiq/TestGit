@@ -4,5 +4,5 @@
 -HTML
 -CSS
 -Bootstrap 5
--Js
+-Js project for resizing image in an unsplash URL 
 
